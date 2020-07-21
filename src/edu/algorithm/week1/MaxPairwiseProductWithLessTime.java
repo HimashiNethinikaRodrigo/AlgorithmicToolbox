@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.StringTokenizer;
 
 public class MaxPairwiseProductWithLessTime {
@@ -41,6 +43,14 @@ public class MaxPairwiseProductWithLessTime {
             numbers[i] = scanner.nextInt();
         }
         System.out.println(getMaxPairwiseProduct(numbers));
+
+        /* This code snippet is used to test the time needed to run the program
+        int [] numbers = new int[100000];
+        Instant start = Instant.now();
+        System.out.println(getMaxPairwiseProduct(numbers));
+        Instant end = Instant.now();
+        System.out.println(Duration.between(end,start)); // PT-0.048265S
+         */
     }
 
     static class FastScanner {

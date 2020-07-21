@@ -1,5 +1,7 @@
 package edu.algorithm.week1;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.*;
 import java.io.*;
 
@@ -26,7 +28,19 @@ public class MaxPairwiseProduct {
         for (int i = 0; i < n; i++) {
             numbers[i] = scanner.nextInt();
         }
+
         System.out.println(getMaxPairwiseProduct(numbers));
+
+        /* This code snippet is used to test the time needed to run the program
+
+        int [] numbers = new int[100000];
+        Instant start = Instant.now();
+        System.out.println(getMaxPairwiseProduct(numbers));
+        Instant end = Instant.now();
+        System.out.println(Duration.between(end,start)); // PT-18.426949S
+
+        */
+
     }
 
     static class FastScanner {
