@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.StringTokenizer;
 
 public class MaxPairwiseProductWithLessTime {
@@ -15,16 +13,16 @@ public class MaxPairwiseProductWithLessTime {
         long max_product = 0;
         int n = numbers.length;
 
-        if (n>1) {
+        if (n > 1) {
 
             largest_number = Math.max(numbers[0], numbers[1]);
             second_largest = Math.min(numbers[0], numbers[1]);
 
             for (int first = 2; first < n; ++first) {
-                if (numbers[first]>largest_number) {
+                if (numbers[first] > largest_number) {
                     second_largest = largest_number;
                     largest_number = numbers[first];
-                } else if (numbers[first] > second_largest || numbers[first] == largest_number ) {
+                } else if (numbers[first] > second_largest || numbers[first] == largest_number) {
                     second_largest = numbers[first];
                 }
             }
