@@ -1,4 +1,4 @@
-package edu.algorithm.week1;
+package main.edu.algorithm.week1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class MaxPairwiseProductWithLessTime {
-    static long getMaxPairwiseProduct(int[] numbers) {
+    public static long getMaxPairwiseProduct(int[] numbers) {
         long largest_number;
         long second_largest;
         long max_product = 0;

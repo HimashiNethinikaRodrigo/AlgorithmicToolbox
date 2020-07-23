@@ -1,12 +1,10 @@
-package edu.algorithm.week1;
+package main.edu.algorithm.week1;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.*;
 import java.io.*;
 
 public class MaxPairwiseProduct {
-    static long getMaxPairwiseProduct(int[] numbers) {
+    public static long getMaxPairwiseProduct(int[] numbers) {
         long max_product = 0;
         int n = numbers.length;
 
