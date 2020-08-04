@@ -22,7 +22,7 @@ public class FibonacciPartialSum {
         return sum % 10;
     }
 
-    private static long getFibonacciPartialSumFast(long from, long to) {
+    public static long getFibonacciPartialSumFast(long from, long to) {
         long value = (FibonacciHuge.getFibonacciHugeFast(to + 2, 10) -1)
                 - (FibonacciHuge.getFibonacciHugeFast(from + 1, 10)-1);
         if (value<0)
