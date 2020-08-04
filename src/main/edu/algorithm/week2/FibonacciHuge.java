@@ -45,7 +45,7 @@ public class FibonacciHuge {
         }
         return lastDigits[n];
     }
-    private static long getFibonacciHugeFast(long n, int m) {
+    public static long getFibonacciHugeFast(long n, int m) {
         int pisanoLength = getPisanoPeriod(m);
         n = n % pisanoLength;
         return getFibonacciModulusFast((int)n,m);
