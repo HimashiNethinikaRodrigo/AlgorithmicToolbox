@@ -19,6 +19,8 @@ public class FibonacciLastDigit {
         return current % 10;
     }
     private static int getFibonacciLastDigitFast(int n) {
+        if (n <= 1)
+            return n;
         int lastDigits[] = new int[n+1];
         lastDigits[0] = 0;
         lastDigits[1] = 1;
