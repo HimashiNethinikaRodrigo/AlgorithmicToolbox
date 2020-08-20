@@ -20,10 +20,17 @@ public class PointsAndSegments {
         for (int i = 0; i < points.length; i++)
             allPoints[j++] = new Value(points[i], 2, i);
 
-
-
         Arrays.sort(allPoints, PointsAndSegments::compare);
 
+        int segments = 0;
+        for (Value allPoint : allPoints) {
+            if (allPoint.type == 1)
+                segments++;
+            if (allPoint.type == 2)
+                cnt[allPoint.index] = segments;
+            if (allPoint.type == 3)
+                segments--;
+        }
 
         return cnt;
     }
