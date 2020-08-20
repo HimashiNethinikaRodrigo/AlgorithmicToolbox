@@ -9,21 +9,23 @@ public class Inversions {
         if (right == left ) {
             return numberOfInversions;
         }
-        int ave = left + ((left - right) / 2);
-        numberOfInversions += getNumberOfInversions(a, b, left, ave);
-        numberOfInversions += getNumberOfInversions(a, b, ave+1, right);
-        //write your code here
-        numberOfInversions += mergeAndCountInversions(a, b, left, ave, right);
+        int mid = left + ((right - left) / 2);
+        numberOfInversions += getNumberOfInversions(a, b, left, mid);
+        numberOfInversions += getNumberOfInversions(a, b, mid+1, right);
+        numberOfInversions += mergeAndCountInversions(a, b, left, mid, right);
         return numberOfInversions;
     }
 
-    private static int mergeAndCountInversions(int[] a, int[] b, int left, int ave, int right) {
-        int[] n1 = new int[ave-left];
-        int[] n2 = new int [right-ave];
+    private static int mergeAndCountInversions(int[] a, int[] b, int left, int mid, int right) {
+        int[] n1 = new int[mid-left];
+        int[] n2 = new int [right-mid];
         int inversions = 0;
-        if (n1.length - left >= 0) System.arraycopy(a, left + left, n1, left, n1.length - left);
-        if (n2.length >= 0) System.arraycopy(a, ave, n2, 0, n2.length);
-
+        for (int i = left; i < n1.length ; i++) {
+            n1[i] = a[left+i];
+        }
+        for (int i = 0; i < n2.length; i++) {
+            n2[i] = a[mid+i];
+        }
         int i=0, j=0, k = left;
 
         while (i < n1.length && j < n2.length) {
