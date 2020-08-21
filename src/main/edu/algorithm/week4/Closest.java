@@ -1,3 +1,5 @@
+package main.edu.algorithm.week4;
+
 import java.io.*;
 import java.util.*;
 
@@ -19,10 +21,27 @@ public class Closest {
         }
     }
 
-    static double minimalDistance(int[] x, int y[]) {
+    static double calculateDistance(Point p1,Point p2){
+        return pow(pow(p1.x - p2.x, 2)+ pow(p1.y - p2.y, 2), 0.5);
+    }
+
+    static double minimalDistance(Point[] x, Point[] y){
         double ans = Double.POSITIVE_INFINITY;
-        //write your code here
+        if (x.length == 1)
+            return ans;
+        if(x.length == 2)
+            return calculateDistance(x[0], x[1]);
         return ans;
+    }
+
+
+    static void minimalDistance(int[] x, int y[]) {
+        Point[] allPoints = new Point[x.length];
+        for (int i = 0; i < x.length; i++) {
+            allPoints[i]= new Point(x[i], y[i]);
+        }
+        Arrays.sort(allPoints);
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -35,7 +54,8 @@ public class Closest {
             x[i] = nextInt();
             y[i] = nextInt();
         }
-        System.out.println(minimalDistance(x, y));
+        minimalDistance(x, y);
+//        System.out.println(minimalDistance(x, y));
         writer.close();
     }
 
