@@ -1,18 +1,33 @@
+package main.edu.algorithm.week5;
+
 import java.util.*;
 
 public class PrimitiveCalculator {
     private static List<Integer> optimal_sequence(int n) {
-        List<Integer> sequence = new ArrayList<Integer>();
-        while (n >= 1) {
-            sequence.add(n);
-            if (n % 3 == 0) {
-                n /= 3;
-            } else if (n % 2 == 0) {
-                n /= 2;
-            } else {
-                n -= 1;
+        List<Integer> sequence = new ArrayList<>();
+
+        ArrayList<OperationPair<Integer, Integer>> minOperations = new ArrayList<>();
+        minOperations.add(new OperationPair<>(Integer.MAX_VALUE, null));
+        minOperations.add(new OperationPair<>(0, 2));
+
+        for (int i=2; i<=n; i++) {
+            int[] operations =new int[3];
+            operations[0]= i%2==0?i/2:0; //op 0
+            operations[1]= i%3==0?i/3:0; //op 1
+            operations[2]= i-1;          //op 2
+
+            OperationPair<Integer, Integer> minimum=null;
+            for(int j=0; j<operations.length; j++){
+                if(operations[j]>0){
+                    //save last minimum solution
+                    if (minimum==null || minOperations.get(operations[j]).a+1<minimum.a){
+                        minimum=new OperationPair<>(minOperations.get(operations[j]).a+1,j);
+                    }
+                }
             }
+            minOperations.add(minimum);
         }
+
         Collections.reverse(sequence);
         return sequence;
     }
@@ -24,6 +39,17 @@ public class PrimitiveCalculator {
         System.out.println(sequence.size() - 1);
         for (Integer x : sequence) {
             System.out.print(x + " ");
+        }
+    }
+
+    private static class OperationPair<A,B>{
+
+        A a;
+        B b;
+
+        public OperationPair(A a, B b){
+            this.a=a;
+            this.b=b;
         }
     }
 }
